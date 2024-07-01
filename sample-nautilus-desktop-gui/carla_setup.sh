@@ -4,7 +4,7 @@ BASE_PATH=~/persistent
 # Install Miniconda
 mkdir -p $BASE_PATH/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $BASE_PATH/miniconda3/miniconda.sh
-bash $BASE_PATH/miniconda3/miniconda.sh -b -u
+bash $BASE_PATH/miniconda3/miniconda.sh -b -u $BASE_PATH/miniconda3
 rm -rf $BASE_PATH/miniconda3/miniconda.sh
 
 $BASE_PATH/miniconda3/bin/conda init bash
