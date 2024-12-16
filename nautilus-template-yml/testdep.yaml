@@ -1,3 +1,4 @@
+# Strat -> find and replace "jonathan-snn" with whatever you want and then add enable features as needed
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -29,13 +30,13 @@ spec:
             nvidia.com/gpu: 1
             # ephemeral-storage: 500Gi
         command: [ "sh", "-c", "sleep infinity" ]
-      #   volumeMounts:
-      #   - mountPath: /pvcvolume
-      #     name: examplevol
-      # volumes:
-      # - name: examplevol
-      #   persistentVolumeClaim:
-      #     claimName: jonathan-snn
+        volumeMounts:
+        - mountPath: /pvcvolume
+          name: examplevol
+      volumes:
+      - name: examplevol
+        persistentVolumeClaim:
+          claimName: jonathan-snn
       # affinity:
       #   nodeAffinity:
       #     requiredDuringSchedulingIgnoredDuringExecution:

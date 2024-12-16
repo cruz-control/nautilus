@@ -14,7 +14,7 @@ spec:
   containers:
   - name: jonathan-jupyter-notebook
     image: gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/tensorflow
-    command: ["sh", "-c", "sudo apt-get update && pip3 install torch torchvision torchaudio && jupyter notebook --ip='0.0.0.0' && sleep infinity"]
+    command: [ "sh", "-c", "sudo apt-get update && pip3 install torch torchvision torchaudio && jupyter notebook --ip='0.0.0.0' && sleep infinity" ]
     resources:
       limits:
         memory: 20Gi
@@ -25,13 +25,11 @@ spec:
         cpu: "2"
         nvidia.com/gpu: 1
 
-        # Uncomment Section to mount a PVC
-
-        #   volumeMounts:
-        #   - mountPath: /pvcvolume
-        #     name: pvc
-        # restartPolicy: Never
-        # volumes:
-        # - name: pvc
-        #   persistentVolumeClaim:
-        #     claimName: j-carla
+      volumeMounts:
+      - mountPath: /pvcvolume
+        name: pvc
+    restartPolicy: Never
+    volumes:
+    - name: pvc
+      persistentVolumeClaim:
+        claimName: j-carla

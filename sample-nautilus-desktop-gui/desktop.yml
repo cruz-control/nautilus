@@ -15,7 +15,7 @@ spec:
       hostname: INITIALS-desktop # Change this to your initials
       containers:
       - name: INITIALS-desktop # Change this to your initials
-        image: ghcr.io/selkies-project/nvidia-glx-desktop:latest # If you face compatibility issues, replace "latest" with "22.04-20240815104538" or any other tag found here https://github.com/selkies-project/docker-nvidia-glx-desktop/pkgs/container/nvidia-glx-desktop
+        image: ghcr.io/selkies-project/nvidia-glx-desktop:24.04-20240924062704 # If you face compatibility issues, replace "latest" with "22.04-20240815104538" or any other tag found here https://github.com/selkies-project/docker-nvidia-glx-desktop/pkgs/container/nvidia-glx-desktop
         env:
         - name: TZ
           value: "UTC"
