@@ -1,5 +1,7 @@
 # Run script with source carla_setup.sh
 
+sudo-root -u root chown -R ubuntu /home/ubuntu
+
 #!/bin/bash
 BASE_PATH=/home/ubuntu/persistent
 
