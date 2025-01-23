@@ -3,32 +3,32 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: haproxy
-  name: INITIALS-desktop # Change this to your initials
+  name: cruzid-desktop # Change this to your cruzid
 spec:
   rules:
-  - host: INITIALS.nrp-nautilus.io # Change this to your initials
+  - host: cruzid.nrp-nautilus.io # Change this to your cruzid
     http:
       paths:
       - backend:
           service:
-            name: INITIALS-desktop # Change this to your initials
+            name: cruzid-desktop # Change this to your cruzid
             port:
               name: http
         path: /
         pathType: ImplementationSpecific
   tls:
   - hosts:
-    - INITIALS.nrp-nautilus.io # Change this to your initials
+    - cruzid.nrp-nautilus.io # Change this to your cruzid
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: INITIALS-desktop # Change this to your initials
+  name: cruzid-desktop # Change this to your cruzid
   labels:
-    app: INITIALS-desktop # Change this to your initials
+    app: cruzid-desktop # Change this to your cruzid
 spec:
   selector:
-    app: INITIALS-desktop # Change this to your initials
+    app: cruzid-desktop # Change this to your cruzid
   ports:
   - name: http
     protocol: TCP

@@ -2,13 +2,13 @@
 
 ## TLDR
 
-Create a copy of this folder, then inside each file, change every instance of "INITIALS" with your initial, and then run the command below to start your instance.
+Create a copy of this folder, then inside each file, change every instance of "cruzid" with your cruzid, and then run the command below to start your instance.
 
 ```bash
 sh setup.sh 0
 ```
 
-to start your desktop. Finally, go to the url mentioned in the desktop-ingres file, which would look like this `INITIALS.nrp-nautilus.io`.
+to start your desktop. Finally, go to the url mentioned in the desktop-ingres file, which would look like this `cruzid.nrp-nautilus.io`.
 
 When you go to the url, it will ask for username and password. 
 
@@ -37,7 +37,7 @@ You can instal all the dependencies by running `carla_setup.sh` on the pod.
 
 ## Basics/Resources
 
-WARNING: Before beginning this guide, please have a basic understanding of nautilus and have it setup on your computer. A quick start can be found here: https://docs.nationalresearchplatform.org/userdocs/start/quickstart/. To get namespace access, please email lgilpin@ucsc.edu.
+WARNING: Before beginning this guide, please have a basic understanding of nautilus and have it setup on your computer. A quick start can be found here: https://docs.nationalresearchplatform.org/userdocs/start/quickstart/. To get namespace access, please email jowemorr@ucsc.edu or lgilpin@ucsc.edu.
 
 This small guide is derived from these resources:
 - CARLA on Nautilus: https://github.com/oliverc1623/ceriad/blob/main/nautilus-files/README.md

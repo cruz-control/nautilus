@@ -1,30 +1,41 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: testjob
+  name: jonathan-video-classifer-train
 spec:
   template:
     spec:
       containers:
-      - name: demo
-        image: gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prp:latest
+      - name: jonathan-video-classifer-train
+        image: nvidia/cuda:12.1.1-cudnn8-devel-ubuntu20.04
         command:
         - sh
         - -c
-        - "cd /persistentvol && python decisiontree.py"
+        - "cd pvcvolume && sh setup.sh && python3 train.py"
         volumeMounts:
-        - name: persistentvol
-          mountPath: /persistentvol
+        - name: pvcvolume
+          mountPath: /pvcvolume
         resources:
           limits:
-            memory: 16Gi
-            cpu: "4"
+            memory: 32Gi
+            cpu: "10"
+            nvidia.com/gpu: 1
           requests:
-            memory: 8Gi
-            cpu: "2"
+            memory: 32Gi
+            cpu: "10"
+            nvidia.com/gpu: 1
       volumes:
-      - name: persistentvol
+      - name: pvcvolume
         persistentVolumeClaim:
-          claimName: jonathan-nuscenes
+          claimName: jonathan-video-classification
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nvidia.com/gpu.product
+                operator: In
+                values:
+                - NVIDIA-A10
       restartPolicy: Never
   backoffLimit: 5

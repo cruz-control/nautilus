@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: INITIALS-desktop # Change this to your initials
+  name: cruzid-desktop # Change this to your cruzid
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: INITIALS-desktop # Change this to your initials
+      app: cruzid-desktop # Change this to your cruzid
   template:
     metadata:
       labels:
-        app: INITIALS-desktop # Change this to your initials
+        app: cruzid-desktop # Change this to your cruzid
     spec:
-      hostname: INITIALS-desktop # Change this to your initials
+      hostname: cruzid-desktop # Change this to your cruzid
       containers:
-      - name: INITIALS-desktop # Change this to your initials
+      - name: cruzid-desktop # Change this to your cruzid
         image: ghcr.io/selkies-project/nvidia-glx-desktop:24.04-20240924062704 # If you face compatibility issues, replace "latest" with "22.04-20240815104538" or any other tag found here https://github.com/selkies-project/docker-nvidia-glx-desktop/pkgs/container/nvidia-glx-desktop
         env:
         - name: TZ
@@ -88,10 +88,10 @@ spec:
           medium: Memory
       - name: cache-vol
         persistentVolumeClaim:
-          claimName: INITIALS-carla-cache # Change this to your initials
+          claimName: cruzid-carla-cache # Change this to your cruzid
       - name: root-vol
         persistentVolumeClaim:
-          claimName: INITIALS-carla # Change this to your initials
+          claimName: cruzid-carla # Change this to your cruzid
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
