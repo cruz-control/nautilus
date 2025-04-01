@@ -5,6 +5,7 @@ metadata:
     kubernetes.io/ingress.class: haproxy
   name: cruzid-desktop # Change this to your cruzid
 spec:
+  ingressClassName: haproxy
   rules:
   - host: cruzid.nrp-nautilus.io # Change this to your cruzid
     http:
