@@ -30,6 +30,8 @@ If you run into any issues, run:
 sh setup.sh 2
 sh setup.sh 0
 ```
+## New namespace setup
+For a new namespace, you must run `kubectl create secret generic my-pass --from-literal=my-pass=aiea123 --from-literal=turn-secret=cup5dBCknRijK4roVJSEUFikEpu8xdKAqGxubX7CbZ2YkpgC4zFsU5Ukqf97PHsE` before the setup script.
 
 ## Setting Up CARLA
 
