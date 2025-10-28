@@ -1,40 +1,48 @@
-# Strat -> find and replace "jonathan-test" with whatever you want and then add enable features as needed
+# image: nvidia/cuda:12.4.1-cudnn-devel-ubuntu20.04
+# image: nvidia/12.8.1-cudnn-devel-ubuntu20.04
+
+# Tip -> Find and replace "jonathan-autogen" with the PVC name
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jonathan-test
+  name: jonathan-autogen
   labels:
-    k8s-app: jonathan-test
+    k8s-app: jonathan-autogen
 spec:
   replicas: 1
   selector:
     matchLabels:
-      k8s-app: jonathan-test
+      k8s-app: jonathan-autogen
   template:
     metadata:
       labels:
-        k8s-app: jonathan-test
+        k8s-app: jonathan-autogen
     spec:
       containers:
-      - name: jonathan-test
-        image: nvidia/cuda:11.3.1-devel-ubuntu20.04
+      - name: jonathan-autogen
+        image: nvidia/cuda:12.9.1-cudnn-devel-ubuntu24.04
         resources:
           limits:
-            memory: 32Gi
-            cpu: "10"
+            memory: 100Gi
+            cpu: "20"
             nvidia.com/gpu: 1
           requests:
-            memory: 32Gi
-            cpu: "10"
+            memory: 100Gi
+            cpu: "20"
             nvidia.com/gpu: 1
         command: [ "sh", "-c", "sleep infinity" ]
         volumeMounts:
         - mountPath: /pvcvolume
-          name: examplevol
+          name: vol1
+        # - mountPath: /shapenet
+        #   name: vol2
       volumes:
-      - name: examplevol
+      - name: vol1
         persistentVolumeClaim:
-          claimName: jonathan-test
+          claimName: jonathan-autogen
+      # - name: vol2
+      #   persistentVolumeClaim:
+      #     claimName: jonathan-shapenet
       # affinity:
       #   nodeAffinity:
       #     requiredDuringSchedulingIgnoredDuringExecution:
@@ -43,8 +51,12 @@ spec:
       #         - key: nvidia.com/gpu.product
       #           operator: In
       #           values:
-      #           - NVIDIA-A10
-      # tolerations:
-      # - effect: NoSchedule
-      #   key: nautilus.io/gilpin-lab
-      #   operator: Exists
+      #           - NVIDIA-L40
+      #         - key: kubernetes.io/hostname
+      #           operator: In
+      #           values:
+      #           - k8s-gpu-5.ucsc.edu
+      tolerations:
+      - effect: NoSchedule
+        key: nautilus.io/gilpin-lab
+        operator: Exists

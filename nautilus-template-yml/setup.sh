@@ -1,4 +1,6 @@
 # Usefull for setting up basic tools in a pod/deployment
+cp -r .ssh/ ~/
+chmod 400 ~/.ssh/id_rsa
 
 apt update
 apt install -y wget git

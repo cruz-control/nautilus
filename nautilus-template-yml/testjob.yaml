@@ -1,41 +1,41 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: jonathan-video-classifer-train
+  name: jowemorr-carla
 spec:
   template:
     spec:
       containers:
-      - name: jonathan-video-classifer-train
-        image: nvidia/cuda:12.1.1-cudnn8-devel-ubuntu20.04
+      - name: jowemorr-carla
+        image: pytorch/pytorch
         command:
         - sh
         - -c
-        - "cd pvcvolume && sh setup.sh && python3 train.py"
+        - "cd /pvcvolume && pip install -r requirements.txt && cd block-diffusion && python3 voxelize.py"
         volumeMounts:
         - name: pvcvolume
           mountPath: /pvcvolume
         resources:
           limits:
-            memory: 32Gi
-            cpu: "10"
+            memory: 100Gi
+            cpu: "32"
             nvidia.com/gpu: 1
           requests:
-            memory: 32Gi
-            cpu: "10"
+            memory: 100Gi
+            cpu: "32"
             nvidia.com/gpu: 1
       volumes:
       - name: pvcvolume
         persistentVolumeClaim:
-          claimName: jonathan-video-classification
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: nvidia.com/gpu.product
-                operator: In
-                values:
-                - NVIDIA-A10
+          claimName: jowemorr-carla
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: nvidia.com/gpu.product
+      #           operator: In
+      #           values:
+      #           - NVIDIA-A10
       restartPolicy: Never
-  backoffLimit: 5
+  backoffLimit: 2
