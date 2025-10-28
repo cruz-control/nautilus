@@ -84,8 +84,7 @@ spec:
         - 8.8.4.4
       volumes:
       - name: dshm
-        emptyDir:
-          medium: Memory
+        emptyDir: {}
       - name: cache-vol
         persistentVolumeClaim:
           claimName: cruzid-carla-cache # Change this to your cruzid
