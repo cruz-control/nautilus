@@ -5,8 +5,8 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: centos:centos7
-    command: ["sh", "-c", "sleep infinity"]
+    image: pytorch/pytorch
+    command: [ "sh", "-c", "sleep infinity" ]
     resources:
       limits:
         memory: 100Mi
@@ -18,6 +18,6 @@ spec:
     - mountPath: /pvcvolume
       name: examplevol
   volumes:
-    - name: examplevol
-      persistentVolumeClaim:
-        claimName: test-vol1
+  - name: examplevol
+    persistentVolumeClaim:
+      claimName: test-vol1

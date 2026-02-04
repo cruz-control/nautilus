@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: test-pod
-    image: centos:centos7
+    image: pytorch/pytorch
     resources:
       limits:
         memory: 1Gi
@@ -13,4 +13,4 @@ spec:
       requests:
         memory: 512Mi
         cpu: 1
-    command: ["sh", "-c", "echo 'Im a new pod' && sleep infinity"]
+    command: [ "sh", "-c", "echo 'Im a new pod' && sleep infinity" ]

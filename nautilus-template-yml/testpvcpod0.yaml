@@ -5,8 +5,8 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: centos:centos7
-    command: ["sh", "-c", "sleep infinity"]
+    image: pytorch/pytorch
+    command: [ "sh", "-c", "sleep infinity" ]
     resources:
       limits:
         memory: 100Mi
